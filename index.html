@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INKVERSE | Ultra-Premium Tattoo Studio | Dark Luxury & Cyberpunk Art</title>
+    <meta name="description"
+        content="Inkverse is an award-winning premium tattoo studio specializing in futuristic, dark luxury, and cyberpunk body art. Book your masterpiece session today.">
+    <meta name="keywords" content="premium tattoo studio, cyberpunk tattoo, luxury body art, futuristic tattoo, inkverse studio">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="INKVERSE | Premium Tattoo Studio">
+    <meta property="og:description" content="Experience the future of body art in a dark luxury setting.">
+    <meta property="og:type" content="website">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TattooParlor",
+      "name": "Inkverse Studio",
+      "image": "https://inkverse.studio/assets/heroImg.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "124 Cyber Avenue",
+        "addressLocality": "Neo Tokyo",
+        "addressCountry": "JP"
+      },
+      "telephone": "+9163253013",
+      "priceRange": "$$$",
+      "openingHours": "Mo-Sa 10:00-22:00"
+    }
+    </script>
+
+    <link rel="preconnect" href="https://api.fontshare.com">
+    <link
+        href="https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&f[]=general-sans@200,300,400,500,600&display=swap"
+        rel="stylesheet">
+    <link rel="preload" href="./assets/heroImg.png" as="image" fetchpriority="high">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-barba="wrapper">
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <div class="noise-overlay"></div>
+    <div class="grid-lines">
+        <div class="v-line"></div>
+        <div class="v-line"></div>
+        <div class="v-line"></div>
+        <div class="h-line"></div>
+        <div class="h-line"></div>
+    </div>
+
+    <!-- Animated background lining elements -->
+    <div class="animated-bg-lines">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="bg-lining-path" d="M0,500 Q250,200 500,500 T1000,500" fill="none"
+                stroke="rgba(255,255,255,0.05)" stroke-width="2" />
+            <path class="bg-lining-path-reverse" d="M0,500 Q250,800 500,500 T1000,500" fill="none"
+                stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+            <path class="bg-lining-path-vertical" d="M500,0 Q800,250 500,500 T500,1000" fill="none"
+                stroke="rgba(255,255,255,0.03)" stroke-width="1.5" />
+        </svg>
+    </div>
+
+    <div class="particles" id="particles"></div>
+
+    <!-- Spline 3D Background -->
+    <div class="spline-container">
+        <!-- We use a cool abstract Spline shape here. -->
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.51/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/iW2R2bT2nDBf9dD8/scene.splinecode"></spline-viewer>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <div class="logo">INKVERSE</div>
+        </div>
+        <div class="nav-center">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#portfolio" class="nav-link">Portfolio</a>
+            <a href="#artists" class="nav-link">Artists</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-right">
+            <button class="menu-btn">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main data-barba="container" data-barba-namespace="home">
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+                <div class="typography-layer">
+                    <h1 class="main-heading">
+                        <span class="line"><span class="word">INKVERSE</span></span>
+                        <span class="line"><span class="word">TATTOO <span
+                                    class="outline-text">STUDIO</span></span></span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="character-wrapper">
+                <div class="glow-rim"></div>
+                <!-- The custom image will be dynamically replaced later, using the placeholder for now -->
+                <img fetchpriority="high" src="./assets/heroImg.png" alt="Tattoo Artist Placeholder" class="character-img"
+                    id="hero-character">
+                <div class="ink-splash"></div>
+            </div>
+
+            <div class="right-visual-area">
+                <div class="chrome-spheres">
+                    <div class="sphere sphere-1"></div>
+                    <div class="sphere sphere-2"></div>
+                </div>
+            </div>
+
+            <div class="bottom-actions">
+                <div class="button-group">
+                    <a href="#" class="btn btn-primary magnetic" data-strength="20">
+                        <span class="btn-text">Book Session</span>
+                        <div class="btn-glare"></div>
+                    </a>
+                    <a href="#" class="btn btn-secondary magnetic" data-strength="20">
+                        <span class="btn-text">Explore Portfolio</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="bottom-info-strip">
+                <div class="info-item">
+                    <span class="info-value counter" data-target="12">0</span><span class="plus">+</span>
+                    <span class="info-label">Years Experience</span>
+                </div>
+                <div class="separator"></div>
+                <div class="info-item">
+                    <span class="info-value counter" data-target="3000">0</span><span class="plus">+</span>
+                    <span class="info-label">Happy Clients</span>
+                </div>
+                <div class="separator"></div>
+                <div class="info-item">
+                    <span class="info-value counter" data-target="25">0</span><span class="plus">+</span>
+                    <span class="info-label">Awards Won</span>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="about-studio" id="about">
+            <div class="about-grid-bg">
+                <div class="about-v-line"></div>
+                <div class="about-v-line"></div>
+                <div class="about-v-line"></div>
+                <div class="about-h-line"></div>
+                <div class="about-h-line"></div>
+                <div class="grid-glow-intersection ggi-1"></div>
+                <div class="grid-glow-intersection ggi-2"></div>
+            </div>
+
+            <div class="about-top-left-orb">
+                <img loading="lazy" src="./assets/aboutSkull.png" alt="Chrome Skull" class="floating-obj skull-obj">
+            </div>
+
+            <div class="about-top-right-orb">
+                <img loading="lazy" src="./assets/aboutRing.png" alt="Chrome Rings" class="floating-obj rings-obj">
+            </div>
+
+            <div class="about-container">
+                <div class="about-left">
+                    <div class="machine-wrapper">
+                        <div class="machine-glow"></div>
+                        <img loading="lazy" src="./assets/aboutMachine.png" alt="Tattoo Machine" class="floating-obj machine-obj">
+                        <div class="machine-ink-splash"></div>
+                    </div>
+                </div>
+
+                <div class="about-right">
+                    <div class="about-content">
+                        <span class="about-label">ABOUT STUDIO</span>
+                        <h2 class="about-heading">
+                            <span class="line"><span class="word">THE ART</span></span>
+                            <span class="line"><span class="word">OF INK</span></span>
+                        </h2>
+                        <p class="about-desc">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam.
+                        </p>
+
+                        <div class="feature-cards">
+                            <div class="feature-card">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                                    </svg>
+                                </div>
+                                <h3>Custom Design</h3>
+                                <p>Exquisite bespoke pieces tailored to your personal narrative.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                    </svg>
+                                </div>
+                                <h3>Premium Hygiene</h3>
+                                <p>Hospital-grade sterilization for uncompromising safety.</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="card-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <circle cx="12" cy="7" r="4" />
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                    </svg>
+                                </div>
+                                <h3>Master Artists</h3>
+                                <p>World-renowned talent executing flawless technical precision.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-bottom-tool">
+                <img loading="lazy" src="./assets/aboutNeddle.png" alt="Tattoo Needle" class="floating-obj needle-obj">
+            </div>
+        </section>
+
+        <!-- PORTFOLIO SECTION -->
+        <section class="portfolio-section" id="portfolio">
+            <div class="portfolio-bg">
+                <div class="p-v-line"></div>
+                <div class="p-v-line"></div>
+                <div class="p-h-line"></div>
+                <div class="p-h-line"></div>
+
+                <!-- Glowing Grid Intersections -->
+                <div class="grid-glow-intersection ggi-port-1"></div>
+                <div class="grid-glow-intersection ggi-port-2"></div>
+                <div class="grid-glow-intersection ggi-port-3"></div>
+                <div class="grid-glow-intersection ggi-port-4"></div>
+            </div>
+
+            <!-- Floating 3D Elements -->
+            <img loading="lazy" src="./assets/3d_tattoo_machine.png" alt="Tattoo Machine" class="floating-obj port-ring-obj">
+            <img loading="lazy" src="./assets/3d_ink_bottle.png" alt="Ink Bottle" class="floating-obj port-skull-obj">
+
+            <div class="portfolio-container">
+                <div class="portfolio-header">
+                    <span class="p-label">TATTOO PORTFOLIO</span>
+                    <h2 class="p-heading">
+                        <span class="line"><span class="word">FEATURED</span></span>
+                        <span class="line"><span class="word">WORKS</span></span>
+                    </h2>
+                    <p class="p-desc">
+                        A curated exhibition of our most intricate and boundary-pushing body art. Every piece represents
+                        a unique narrative, meticulously brought to life through world-class precision and dark luxury
+                        aesthetics.
+                    </p>
+                </div>
+
+                <!-- Swiper Tattoo Cards -->
+                <div class="swiper tattoo-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="tattoo-card magnetic" data-strength="10">
+                                <div class="tc-image">
+                                    <img loading="lazy" src="./assets/tattoo_portrait.png" alt="Black Ink Portrait">
+                                    <div class="tc-overlay"></div>
+                                </div>
+                                <div class="tc-info">
+                                    <h4>Black Ink Portrait</h4>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                                        stroke-width="1.5" fill="none">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tattoo-card magnetic" data-strength="10">
+                                <div class="tc-image">
+                                    <img loading="lazy" src="./assets/tattoo_dragon.png" alt="Japanese Dragon Sleeve">
+                                    <div class="tc-overlay"></div>
+                                </div>
+                                <div class="tc-info">
+                                    <h4>Japanese Dragon Sleeve</h4>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                                        stroke-width="1.5" fill="none">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tattoo-card magnetic" data-strength="10">
+                                <div class="tc-image">
+                                    <img loading="lazy" src="./assets/tattoo_sigil.png" alt="Cyber Sigil Mark">
+                                    <div class="tc-overlay"></div>
+                                </div>
+                                <div class="tc-info">
+                                    <h4>Cyber Sigil Mark</h4>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                                        stroke-width="1.5" fill="none">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tattoo-card magnetic" data-strength="10">
+                                <div class="tc-image">
+                                    <!-- Reusing a generated image as placeholder -->
+                                    <img loading="lazy" src="./assets/tattoo_portrait.png" alt="Dark Raven Tattoo">
+                                    <div class="tc-overlay"></div>
+                                </div>
+                                <div class="tc-info">
+                                    <h4>Dark Raven Tattoo</h4>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                                        stroke-width="1.5" fill="none">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tattoo-card magnetic" data-strength="10">
+                                <div class="tc-image">
+                                    <img loading="lazy" src="./assets/tattoo_dragon.png" alt="Geometric Skull">
+                                    <div class="tc-overlay"></div>
+                                </div>
+                                <div class="tc-info">
+                                    <h4>Geometric Skull</h4>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                                        stroke-width="1.5" fill="none">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- DUPLICATED SLIDES FOR INFINITE LOOP -->
+                        <div class="swiper-slide">
+                            <div class="tattoo-card magnetic" data-strength="10">
+                                <div class="tc-image">
+                                    <img loading="lazy" src="./assets/tattoo_portrait.png" alt="Black Ink Portrait">
+                                    <div class="tc-overlay"></div>
+                                </div>
+                                <div class="tc-info">
+                                    <h4>Black Ink Portrait</h4>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                                        stroke-width="1.5" fill="none">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tattoo-card magnetic" data-strength="10">
+                                <div class="tc-image">
+                                    <img loading="lazy" src="./assets/tattoo_dragon.png" alt="Japanese Dragon Sleeve">
+                                    <div class="tc-overlay"></div>
+                                </div>
+                                <div class="tc-info">
+                                    <h4>Japanese Dragon Sleeve</h4>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                                        stroke-width="1.5" fill="none">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tattoo-card magnetic" data-strength="10">
+                                <div class="tc-image">
+                                    <img loading="lazy" src="./assets/tattoo_sigil.png" alt="Cyber Sigil Mark">
+                                    <div class="tc-overlay"></div>
+                                </div>
+                                <div class="tc-info">
+                                    <h4>Cyber Sigil Mark</h4>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                                        stroke-width="1.5" fill="none">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tattoo-card magnetic" data-strength="10">
+                                <div class="tc-image">
+                                    <!-- Reusing a generated image as placeholder -->
+                                    <img loading="lazy" src="./assets/tattoo_portrait.png" alt="Dark Raven Tattoo">
+                                    <div class="tc-overlay"></div>
+                                </div>
+                                <div class="tc-info">
+                                    <h4>Dark Raven Tattoo</h4>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                                        stroke-width="1.5" fill="none">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="tattoo-card magnetic" data-strength="10">
+                                <div class="tc-image">
+                                    <img loading="lazy" src="./assets/tattoo_dragon.png" alt="Geometric Skull">
+                                    <div class="tc-overlay"></div>
+                                </div>
+                                <div class="tc-info">
+                                    <h4>Geometric Skull</h4>
+                                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor"
+                                        stroke-width="1.5" fill="none">
+                                        <path d="M5 12h14M12 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Showcase Area -->
+                <!-- Video Showcase Area -->
+                <div class="video-showcase">
+                    <div class="video-main magnetic" data-strength="5">
+                        <div class="v-main-wrapper">
+                            <video class="custom-video-player" poster="./assets/tattoo_process.png"
+                                src="https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+                                playsinline></video>
+                            <div class="v-overlay"></div>
+
+                            <!-- Custom Controls Overlay -->
+                            <div class="v-controls">
+                                <div class="v-progress-bar">
+                                    <div class="v-progress-filled"></div>
+                                </div>
+                                <div class="v-controls-bottom">
+                                    <button class="v-play-pause">
+                                        <svg class="icon-play" viewBox="0 0 24 24" fill="white" width="24" height="24">
+                                            <path d="M8 5v14l11-7z" />
+                                        </svg>
+                                        <svg class="icon-pause" viewBox="0 0 24 24" fill="white" width="24" height="24"
+                                            style="display:none;">
+                                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+                                        </svg>
+                                    </button>
+                                    <div class="v-time">
+                                        <span class="v-current">0:00</span> / <span class="v-duration">0:00</span>
+                                    </div>
+                                    <button class="v-mute">
+                                        <svg class="icon-unmute" viewBox="0 0 24 24" fill="white" width="20"
+                                            height="20">
+                                            <path
+                                                d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z" />
+                                        </svg>
+                                        <svg class="icon-mute" viewBox="0 0 24 24" fill="white" width="20" height="20"
+                                            style="display:none;">
+                                            <path
+                                                d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z" />
+                                        </svg>
+                                    </button>
+                                    <button class="v-fullscreen">
+                                        <svg viewBox="0 0 24 24" fill="white" width="20" height="20">
+                                            <path
+                                                d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <button class="play-btn big-play-btn">
+                                <svg viewBox="0 0 24 24" fill="white" width="30" height="30">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="video-stack-wrapper">
+                        <div class="video-stack swiper video-stack-swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="video-mini magnetic" data-strength="5"
+                                        data-video-src="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+                                        data-poster-src="./assets/tattoo_sigil.png" data-title="Tattoo Timelapse">
+                                        <video
+                                            src="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+                                            poster="./assets/tattoo_sigil.png" playsinline preload="metadata"></video>
+                                        <div class="v-mini-overlay"></div>
+                                        <div class="v-mini-info">
+                                            <svg viewBox="0 0 24 24" fill="white" width="16" height="16">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                            <span>Tattoo Timelapse</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="video-mini magnetic" data-strength="5"
+                                        data-video-src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                        data-poster-src="./assets/tattoo_portrait.png" data-title="Black Ink Shading">
+                                        <video
+                                            src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                            poster="./assets/tattoo_portrait.png" playsinline
+                                            preload="metadata"></video>
+                                        <div class="v-mini-overlay"></div>
+                                        <div class="v-mini-info">
+                                            <svg viewBox="0 0 24 24" fill="white" width="16" height="16">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                            <span>Black Ink Shading</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="video-mini magnetic" data-strength="5"
+                                        data-video-src="https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+                                        data-poster-src="./assets/tattoo_process.png" data-title="Fine Line Session">
+                                        <video
+                                            src="https://storage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+                                            poster="./assets/tattoo_process.png" playsinline preload="metadata"></video>
+                                        <div class="v-mini-overlay"></div>
+                                        <div class="v-mini-info">
+                                            <svg viewBox="0 0 24 24" fill="white" width="16" height="16">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                            <span>Fine Line Session</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Duplicated items for demonstration of scrolling -->
+                                <div class="swiper-slide">
+                                    <div class="video-mini magnetic" data-strength="5"
+                                        data-video-src="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+                                        data-poster-src="./assets/tattoo_dragon.png" data-title="Dragon Sleeve Detail">
+                                        <video
+                                            src="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+                                            poster="./assets/tattoo_dragon.png" playsinline preload="metadata"></video>
+                                        <div class="v-mini-overlay"></div>
+                                        <div class="v-mini-info">
+                                            <svg viewBox="0 0 24 24" fill="white" width="16" height="16">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                            <span>Dragon Sleeve Detail</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="video-mini magnetic" data-strength="5"
+                                        data-video-src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                        data-poster-src="./assets/tattoo_sigil.png" data-title="Cyber Stencil Work">
+                                        <video
+                                            src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                                            poster="./assets/tattoo_sigil.png" playsinline preload="metadata"></video>
+                                        <div class="v-mini-overlay"></div>
+                                        <div class="v-mini-info">
+                                            <svg viewBox="0 0 24 24" fill="white" width="16" height="16">
+                                                <path d="M8 5v14l11-7z" />
+                                            </svg>
+                                            <span>Cyber Stencil Work</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="v-stack-nav">
+                            <button class="v-stack-prev magnetic" data-strength="2">
+                                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2"
+                                    fill="none">
+                                    <path d="M18 15l-6-6-6 6" />
+                                </svg>
+                            </button>
+                            <button class="v-stack-next magnetic" data-strength="2">
+                                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2"
+                                    fill="none">
+                                    <path d="M6 9l6 6 6-6" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARTISTS SECTION -->
+        <section class="artists-section" id="artists">
+            <div class="artists-spline-bg">
+                <spline-viewer url="https://prod.spline.design/iW2R2bT2nDBf9dD8/scene.splinecode"></spline-viewer>
+            </div>
+            <div class="artists-bg">
+                <div class="a-v-line"></div>
+                <div class="a-v-line"></div>
+                <div class="a-v-line"></div>
+                <div class="a-h-line"></div>
+                <div class="a-h-line"></div>
+                <div class="a-gradient-glow"></div>
+            </div>
+
+            <!-- Floating Objects -->
+            <img loading="lazy" src="./assets/chrome_rose.png" alt="Chrome Rose" class="floating-obj a-rose-obj">
+            <img loading="lazy" src="./assets/aboutSkull.png" alt="Chrome Skull" class="floating-obj a-skull-obj">
+
+            <div class="artists-container">
+                <div class="artists-header-wrap">
+                    <div class="artists-header">
+                        <span class="a-label">OUR ARTISTS</span>
+                        <h2 class="a-heading">
+                            <span class="line"><span class="word">MEET THE</span></span>
+                            <span class="line"><span class="word">ARTISTS</span></span>
+                        </h2>
+                        <p class="a-desc">Our award-winning resident artists specialize in a variety of premium styles,
+                            from hyper-realism to dark geometric line-work. Explore their portfolios and find the
+                            perfect creative visionary for your next piece.</p>
+                    </div>
+                    <div class="artist-slider-nav">
+                        <button class="a-nav-btn a-prev magnetic" data-strength="10" aria-label="Previous Artist">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none">
+                                <path d="M15 18l-6-6 6-6" />
+                            </svg>
+                        </button>
+                        <button class="a-nav-btn a-next magnetic" data-strength="10" aria-label="Next Artist">
+                            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2"
+                                fill="none">
+                                <path d="M9 18l6-6-6-6" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="swiper artist-swiper">
+                    <div class="swiper-wrapper">
+                        <!-- Artist 1 -->
+                        <div class="swiper-slide">
+                            <div class="artist-card magnetic" data-strength="15">
+                                <div class="ac-top">
+                                    <div class="ac-image-container">
+                                        <img loading="lazy" src="./assets/artist_portrait_1_1778180014311.png" alt="Artist Portrait"
+                                            class="ac-image">
+                                        <div class="ac-image-overlay"></div>
+                                    </div>
+                                    <div class="ac-shine"></div>
+                                </div>
+                                <div class="ac-bottom">
+                                    <h3 class="ac-name">Victor Vance</h3>
+                                    <p class="ac-specialty">Black & Grey Specialist</p>
+                                    <div class="ac-socials">
+                                        <a href="#" class="ac-social"><svg viewBox="0 0 24 24" width="16" height="16"
+                                                stroke="currentColor" stroke-width="2" fill="none">
+                                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                            </svg></a>
+                                        <a href="#" class="ac-social"><svg viewBox="0 0 24 24" width="16" height="16"
+                                                stroke="currentColor" stroke-width="2" fill="none">
+                                                <path
+                                                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                                                </path>
+                                            </svg></a>
+                                        <a href="#" class="ac-social"><svg viewBox="0 0 24 24" width="16" height="16"
+                                                stroke="currentColor" stroke-width="2" fill="none">
+                                                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                                            </svg></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Artist 2 -->
+                        <div class="swiper-slide">
+                            <div class="artist-card magnetic" data-strength="15">
+                                <div class="ac-top">
+                                    <div class="ac-image-container">
+                                        <img loading="lazy" src="./assets/artist_portrait_2_1778180032103.png" alt="Artist Portrait"
+                                            class="ac-image">
+                                        <div class="ac-image-overlay"></div>
+                                    </div>
+                                    <div class="ac-shine"></div>
+                                </div>
+                                <div class="ac-bottom">
+                                    <h3 class="ac-name">Elena Rostova</h3>
+                                    <p class="ac-specialty">Fine Line Expert</p>
+                                    <div class="ac-socials">
+                                        <a href="#" class="ac-social"><svg viewBox="0 0 24 24" width="16" height="16"
+                                                stroke="currentColor" stroke-width="2" fill="none">
+                                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                            </svg></a>
+                                        <a href="#" class="ac-social"><svg viewBox="0 0 24 24" width="16" height="16"
+                                                stroke="currentColor" stroke-width="2" fill="none">
+                                                <path
+                                                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                                                </path>
+                                            </svg></a>
+                                        <a href="#" class="ac-social"><svg viewBox="0 0 24 24" width="16" height="16"
+                                                stroke="currentColor" stroke-width="2" fill="none">
+                                                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                                            </svg></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Artist 3 -->
+                        <div class="swiper-slide">
+                            <div class="artist-card magnetic" data-strength="15">
+                                <div class="ac-top">
+                                    <div class="ac-image-container">
+                                        <img loading="lazy" src="./assets/artist_portrait_3_1778180048498.png" alt="Artist Portrait"
+                                            class="ac-image">
+                                        <div class="ac-image-overlay"></div>
+                                    </div>
+                                    <div class="ac-shine"></div>
+                                </div>
+                                <div class="ac-bottom">
+                                    <h3 class="ac-name">Kaelen Cross</h3>
+                                    <p class="ac-specialty">Cyber Sigil Artist</p>
+                                    <div class="ac-socials">
+                                        <a href="#" class="ac-social"><svg viewBox="0 0 24 24" width="16" height="16"
+                                                stroke="currentColor" stroke-width="2" fill="none">
+                                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                            </svg></a>
+                                        <a href="#" class="ac-social"><svg viewBox="0 0 24 24" width="16" height="16"
+                                                stroke="currentColor" stroke-width="2" fill="none">
+                                                <path
+                                                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                                                </path>
+                                            </svg></a>
+                                        <a href="#" class="ac-social"><svg viewBox="0 0 24 24" width="16" height="16"
+                                                stroke="currentColor" stroke-width="2" fill="none">
+                                                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                                            </svg></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Artist 4 -->
+                        <div class="swiper-slide">
+                            <div class="artist-card magnetic" data-strength="15">
+                                <div class="ac-top">
+                                    <div class="ac-image-container">
+                                        <img loading="lazy" src="./assets/tattoo_portrait.png" alt="Artist Portrait" class="ac-image">
+                                        <div class="ac-image-overlay"></div>
+                                    </div>
+                                    <div class="ac-shine"></div>
+                                </div>
+                                <div class="ac-bottom">
+                                    <h3 class="ac-name">Jaxon Reid</h3>
+                                    <p class="ac-specialty">Japanese Master</p>
+                                    <div class="ac-socials">
+                                        <a href="#" class="ac-social"><svg viewBox="0 0 24 24" width="16" height="16"
+                                                stroke="currentColor" stroke-width="2" fill="none">
+                                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                            </svg></a>
+                                        <a href="#" class="ac-social"><svg viewBox="0 0 24 24" width="16" height="16"
+                                                stroke="currentColor" stroke-width="2" fill="none">
+                                                <path
+                                                    d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                                                </path>
+                                            </svg></a>
+                                        <a href="#" class="ac-social"><svg viewBox="0 0 24 24" width="16" height="16"
+                                                stroke="currentColor" stroke-width="2" fill="none">
+                                                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                                            </svg></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CLIENT STORIES SECTION -->
+            <section class="reviews-section" id="reviews">
+                <!-- Background Elements -->
+                <div class="reviews-bg-elements">
+                    <svg class="futuristic-lines" viewBox="0 0 1000 500" preserveAspectRatio="none">
+                        <path class="rev-line-1" d="M 0 250 L 200 250 L 250 150 L 800 150 L 850 250 L 1000 250"
+                            fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1.5" />
+                        <circle cx="200" cy="250" r="3" fill="rgba(255,255,255,0.3)" />
+                        <circle cx="250" cy="150" r="3" fill="rgba(255,255,255,0.3)" />
+                        <circle cx="800" cy="150" r="3" fill="rgba(255,255,255,0.3)" />
+                        <circle cx="850" cy="250" r="3" fill="rgba(255,255,255,0.3)" />
+
+                        <path class="rev-line-2" d="M 150 400 L 300 400 L 350 300 L 600 300" fill="none"
+                            stroke="rgba(255,255,255,0.03)" stroke-width="1" />
+                        <circle cx="300" cy="400" r="2" fill="rgba(255,255,255,0.2)" />
+                        <circle cx="350" cy="300" r="2" fill="rgba(255,255,255,0.2)" />
+                    </svg>
+                </div>
+
+                <!-- Floating Chrome Spheres -->
+                <img loading="lazy" src="./assets/chrome_sphere.png" alt="Chrome Sphere" class="floating-obj rev-sphere rev-s1">
+                <img loading="lazy" src="./assets/chrome_sphere.png" alt="Chrome Sphere" class="floating-obj rev-sphere rev-s2">
+                <img loading="lazy" src="./assets/chrome_sphere.png" alt="Chrome Sphere" class="floating-obj rev-sphere rev-s3">
+
+                <div class="reviews-container">
+                    <div class="reviews-left">
+                        <span class="r-label">STUDIO REVIEWS</span>
+                        <h2 class="r-heading">
+                            <span class="line"><span class="word">CLIENT</span></span>
+                            <span class="line"><span class="word">STORIES</span></span>
+                        </h2>
+                    </div>
+
+                    <div class="reviews-right">
+                        <div class="swiper reviews-swiper">
+                            <div class="swiper-wrapper">
+                                <!-- Review Card 1 -->
+                                <div class="swiper-slide">
+                                    <div class="review-card magnetic" data-strength="15">
+                                        <div class="r-stars">★★★★★</div>
+                                        <p class="r-text">"The attention to detail was unreal. A true luxury experience
+                                            from start to finish. They completely transformed my idea into a
+                                            masterpiece."</p>
+                                        <div class="r-author">JAMES DAVIS</div>
+                                    </div>
+                                </div>
+                                <!-- Review Card 2 -->
+                                <div class="swiper-slide">
+                                    <div class="review-card magnetic" data-strength="15">
+                                        <div class="r-stars">★★★★★</div>
+                                        <p class="r-text">"Absolutely mind-blowing craftsmanship. The studio atmosphere
+                                            is incredibly premium, and the artists are world-class visionaries."</p>
+                                        <div class="r-author">ELENA ROSTOVA</div>
+                                    </div>
+                                </div>
+                                <!-- Review Card 3 -->
+                                <div class="swiper-slide">
+                                    <div class="review-card magnetic" data-strength="15">
+                                        <div class="r-stars">★★★★★</div>
+                                        <p class="r-text">"Best tattoo experience I’ve ever had. Clean, professional,
+                                            and dark luxury aesthetic. I wouldn't trust my skin with anyone else."</p>
+                                        <div class="r-author">MARCUS CHEN</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CONTACT / BOOKING SECTION -->
+            <section class="contact-section" id="contact">
+                <div class="contact-bg-elements">
+                    <div class="c-ambient-glow"></div>
+                    <div class="c-ink-splash"></div>
+                    <div class="c-grid-overlay"></div>
+                </div>
+
+                <div class="contact-container">
+                    <!-- Left Visual Area -->
+                    <div class="contact-left">
+                        <div class="c-machine-wrapper magnetic" data-strength="15">
+                            <img loading="lazy" src="./assets/form-tattoo_machine.png" alt="Tattoo Machine" class="c-machine-img">
+                            <div class="c-machine-glow"></div>
+                        </div>
+                        <div class="c-brand-lockup">
+                            <span class="c-label">STUDIO</span>
+                            <h3 class="c-brand">INKVERSE</h3>
+                        </div>
+                    </div>
+
+                    <!-- Right Form Area -->
+                    <div class="contact-right">
+                        <div class="c-header">
+                            <span class="r-label">BOOK SESSION</span>
+                            <h2 class="c-heading">
+                                <span class="line"><span class="word">LET'S CREATE</span></span>
+                                <span class="line"><span class="word">YOUR NEXT INK</span></span>
+                            </h2>
+                        </div>
+
+                        <form class="booking-form" id="bookingForm">
+                            <div class="form-row">
+                                <div class="input-wrapper">
+                                    <input type="text" id="fullName" class="glass-input" placeholder="Full Name"
+                                        required>
+                                    <div class="input-focus-bg"></div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="input-wrapper">
+                                    <input type="email" id="email" class="glass-input" placeholder="Email Address"
+                                        required>
+                                    <div class="input-focus-bg"></div>
+                                </div>
+                            </div>
+                            <div class="form-row split-row">
+                                <div class="input-wrapper">
+                                    <input type="tel" id="phone" class="glass-input" placeholder="Phone Number"
+                                        required>
+                                    <div class="input-focus-bg"></div>
+                                </div>
+                                <div class="input-wrapper">
+                                    <select id="tattooStyle" class="glass-input custom-select" required>
+                                        <option value="" disabled selected>Select Style</option>
+                                        <option value="Realism">Realism</option>
+                                        <option value="Japanese">Japanese</option>
+                                        <option value="Cyber Sigilism">Cyber Sigilism</option>
+                                        <option value="Blackwork">Blackwork</option>
+                                        <option value="Fine Line">Fine Line</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                    <div class="select-arrow">
+                                        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor"
+                                            stroke-width="2" fill="none">
+                                            <path d="M6 9l6 6 6-6" />
+                                        </svg>
+                                    </div>
+                                    <div class="input-focus-bg"></div>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="input-wrapper">
+                                    <textarea id="message" class="glass-textarea" placeholder="Tattoo Idea / Message"
+                                        rows="4" required></textarea>
+                                    <div class="input-focus-bg"></div>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn-primary magnetic" data-strength="15">
+                                    <span class="btn-text">Book Session</span>
+                                    <div class="btn-glow"></div>
+                                </button>
+                                <a href="tel:+9163253013" class="btn-secondary magnetic" data-strength="10">
+                                    <span class="btn-text">Call Now</span>
+                                </a>
+                            </div>
+                        </form>
+
+                        <div class="c-footer">
+                            <div class="c-contact-info">
+                                <p>Studio: 124 Cyber Avenue, Neo Tokyo</p>
+                                <p>contact@inkverse.studio | +1 (555) 019-2837</p>
+                            </div>
+                            <div class="c-socials">
+                                <a href="#" class="c-social-icon magnetic" data-strength="10"><svg viewBox="0 0 24 24"
+                                        width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                    </svg></a>
+                                <a href="#" class="c-social-icon magnetic" data-strength="10"><svg viewBox="0 0 24 24"
+                                        width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z">
+                                        </path>
+                                    </svg></a>
+                                <a href="#" class="c-social-icon magnetic" data-strength="10"><svg viewBox="0 0 24 24"
+                                        width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                                        <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+                                    </svg></a>
+                                <a href="#" class="c-social-icon magnetic" data-strength="10"><svg viewBox="0 0 24 24"
+                                        width="16" height="16" stroke="currentColor" stroke-width="2" fill="none">
+                                        <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://unpkg.com/@barba/core"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
