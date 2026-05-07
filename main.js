@@ -6,14 +6,31 @@
 
 class InkverseApp {
     constructor() {
-        this.initLenis();
+        // Defensive checks for library availability
+        this.hasLenis = typeof Lenis !== 'undefined';
+        this.hasSwiper = typeof Swiper !== 'undefined';
+        this.hasBarba = typeof barba !== 'undefined';
+        this.hasAnime = typeof anime !== 'undefined';
+
+        if (this.hasLenis) this.initLenis();
         this.initCursor();
         this.initMagneticElements();
         this.initAnimations();
         this.initSwipers();
         this.initVideoPlayer();
         this.initFormHandler();
-        this.initBarba();
+        if (this.hasBarba) this.initBarba();
+        
+        // Safety Fallback: Force reveal after 3 seconds if JS animation fails
+        setTimeout(() => {
+            const selectors = '.word, .about-label, .p-label, .a-label, .r-label, .c-label, .about-desc, .p-desc, .a-desc, .feature-card, .tattoo-swiper, .artist-swiper, .reviews-swiper, .video-showcase, .c-machine-wrapper, .input-wrapper, .c-brand-lockup';
+            document.querySelectorAll(selectors).forEach(el => {
+                if (window.getComputedStyle(el).opacity === '0') {
+                    el.style.opacity = '1';
+                    el.style.transform = 'none';
+                }
+            });
+        }, 3000);
     }
 
     // --- 1. SMOOTH SCROLLING (Lenis) ---
@@ -60,24 +77,22 @@ class InkverseApp {
             mouseY = e.clientY;
         });
 
-        const update = () => {
-            // Lerp for high-fidelity smoothness
-            posX += (mouseX - posX) * 1;
-            posY += (mouseY - posY) * 1;
-            fPosX += (mouseX - fPosX) * 0.12;
-            fPosY += (mouseY - fPosY) * 0.12;
+        const render = () => {
+            // Lerp (Linear Interpolation) for smooth movement
+            posX += (mouseX - posX) * 0.2;
+            posY += (mouseY - posY) * 0.2;
+            fPosX += (mouseX - fPosX) * 0.1;
+            fPosY += (mouseY - fPosY) * 0.1;
 
-            if (cursor && follower) {
-                cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
-                follower.style.transform = `translate3d(${fPosX}px, ${fPosY}px, 0) translate(-50%, -50%)`;
-            }
-            requestAnimationFrame(update);
+            if (cursor) cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
+            if (follower) follower.style.transform = `translate3d(${fPosX}px, ${fPosY}px, 0) translate(-50%, -50%)`;
+
+            requestAnimationFrame(render);
         };
-        update();
+        render();
 
-        // Interaction States
-        const interactiveSelectors = 'a, button, .magnetic, .tattoo-card, .artist-card, .video-mini';
-        document.querySelectorAll(interactiveSelectors).forEach(el => {
+        // Hover states
+        document.querySelectorAll('a, button, .magnetic, .video-mini, .tattoo-card, .artist-card').forEach(el => {
             el.addEventListener('mouseenter', () => follower.classList.add('hover'));
             el.addEventListener('mouseleave', () => follower.classList.remove('hover'));
         });
@@ -85,14 +100,16 @@ class InkverseApp {
 
     // --- 3. MAGNETIC MICRO-INTERACTIONS ---
     initMagneticElements() {
-        document.querySelectorAll('.magnetic').forEach(el => {
+        if (!this.hasAnime) return;
+        
+        const magneticElements = document.querySelectorAll('.magnetic');
+        magneticElements.forEach(el => {
+            const strength = el.dataset.strength || 30;
+            
             el.addEventListener('mousemove', (e) => {
                 const rect = el.getBoundingClientRect();
-                const strength = el.dataset.strength || 20;
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                const x = (e.clientX - centerX) / (rect.width / 2);
-                const y = (e.clientY - centerY) / (rect.height / 2);
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
 
                 anime({
                     targets: el,
@@ -128,6 +145,8 @@ class InkverseApp {
 
     // --- 4. ANIMATION ENGINE (anime.js + IntersectionObserver) ---
     initAnimations() {
+        if (!this.hasAnime) return;
+
         // Scroll Reveal Manager
         const reveal = (selector, props, threshold = 0.25) => {
             const elements = document.querySelectorAll(selector);
@@ -199,144 +218,121 @@ class InkverseApp {
     }
 
     initIdleAnimations() {
-        const float = (targets, translateY, rotate = 0, duration = 4000) => {
-            anime({ targets, translateY, rotate, duration, direction: 'alternate', loop: true, easing: 'easeInOutSine' });
-        };
-        float('.skull-obj', [-15, 15], [0, 8], 4500);
-        float('.rings-obj', [20, -20], [0, -12], 5500);
-        float('.machine-obj', [-10, 10], 0, 3800);
-        float('.needle-obj', 0, [0, 15], 6000);
-        float('.port-ring-obj', [-25, 25], 5, 6500);
-        float('.a-rose-obj', [18, -18], 15, 5200);
-        float('.rev-sphere', [-20, 20], 0, 5000);
+        if (!this.hasAnime) return;
+        
+        anime({
+            targets: '.floating-obj',
+            translateY: [-20, 20],
+            duration: 3000,
+            direction: 'alternate',
+            loop: true,
+            easing: 'easeInOutQuad',
+            delay: anime.stagger(500)
+        });
     }
 
-    // --- 5. SWIPER GALLERY CONFIGURATIONS ---
+    // --- 5. SWIPER CONFIGURATIONS ---
     initSwipers() {
-        const defaults = { grabCursor: true, speed: 1000, loop: true };
+        if (!this.hasSwiper) return;
 
-        this.tattooSwiper = new Swiper('.tattoo-swiper', {
-            ...defaults,
+        // Portfolio Swiper
+        new Swiper('.tattoo-swiper', {
+            slidesPerView: 'auto',
+            spaceBetween: 30,
+            centeredSlides: true,
+            loop: true,
+            speed: 800,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+        });
+
+        // Artist Swiper
+        new Swiper('.artist-swiper', {
             slidesPerView: 'auto',
             spaceBetween: 40,
-            centeredSlides: true,
-            speed: 8000,
-            autoplay: { delay: 0, disableOnInteraction: false }
+            navigation: { nextEl: '.a-next', prevEl: '.a-prev' },
+            speed: 1000,
         });
 
-        this.videoStackSwiper = new Swiper('.video-stack-swiper', {
-            ...defaults,
-            direction: 'vertical',
-            slidesPerView: 3,
-            spaceBetween: 20,
-            mousewheel: true,
-            navigation: { nextEl: '.v-stack-next', prevEl: '.v-stack-prev' },
-            autoplay: { delay: 4000 }
-        });
-
-        this.artistSwiper = new Swiper('.artist-swiper', {
-            ...defaults,
-            slidesPerView: 'auto',
-            spaceBetween: 50,
-            navigation: { nextEl: '.a-next', prevEl: '.a-prev' }
-        });
-
-        this.reviewsSwiper = new Swiper('.reviews-swiper', {
-            ...defaults,
+        // Reviews Swiper
+        new Swiper('.reviews-swiper', {
             slidesPerView: 1,
-            centeredSlides: true,
-            effect: "coverflow",
-            coverflowEffect: { rotate: 0, stretch: 0, depth: 120, modifier: 2, slideShadows: false },
-            autoplay: { delay: 5000 }
+            spaceBetween: 30,
+            loop: true,
+            autoplay: { delay: 4000 },
+            speed: 800,
+        });
+
+        // Video Stack Swiper
+        this.videoStack = new Swiper('.v-stack-swiper', {
+            direction: 'vertical',
+            slidesPerView: 4,
+            spaceBetween: 15,
+            navigation: { nextEl: '.v-stack-next', prevEl: '.v-stack-prev' },
+            speed: 600,
         });
     }
 
-    // --- 6. ADVANCED VIDEO PLAYER ---
+    // --- 6. VIDEO PLAYER LOGIC ---
     initVideoPlayer() {
-        const main = document.querySelector('.custom-video-player');
-        if (!main) return;
-
-        const togglePlay = () => {
-            const btn = document.querySelector('.v-play-pause');
-            if (main.paused) {
-                main.play();
-                btn.querySelector('.icon-play').style.display = 'none';
-                btn.querySelector('.icon-pause').style.display = 'block';
-            } else {
-                main.pause();
-                btn.querySelector('.icon-play').style.display = 'block';
-                btn.querySelector('.icon-pause').style.display = 'none';
-            }
-        };
-
-        document.querySelectorAll('.v-play-pause, .big-play-btn').forEach(b => b.addEventListener('click', togglePlay));
+        const mainVideo = document.querySelector('.v-main-video');
+        const mainTitle = document.querySelector('.v-main-title');
+        const playBtn = document.querySelector('.v-play-btn');
+        const progressBar = document.querySelector('.v-progress-filled');
 
         document.querySelectorAll('.video-mini').forEach(mini => {
             mini.addEventListener('click', () => {
-                const { videoSrc, posterSrc, title } = mini.dataset;
+                const src = mini.dataset.videoSrc;
+                const title = mini.dataset.title;
+                const poster = mini.dataset.posterSrc;
+
                 anime({
-                    targets: '.v-main-wrapper',
-                    opacity: [1, 0, 1],
-                    scale: [1, 0.98, 1],
-                    duration: 800,
-                    easing: 'easeInOutCubic',
-                    update: (anim) => {
-                        if (anim.progress > 50 && main.src !== videoSrc) {
-                            main.src = videoSrc;
-                            main.poster = posterSrc;
-                            const titleEl = document.querySelector('.v-info-title');
-                            if (titleEl) titleEl.innerText = title;
-                            main.load();
-                            main.play();
-                        }
+                    targets: '.video-main',
+                    opacity: [1, 0],
+                    duration: 300,
+                    easing: 'linear',
+                    complete: () => {
+                        mainVideo.src = src;
+                        mainVideo.poster = poster;
+                        mainTitle.innerText = title;
+                        mainVideo.play();
+                        anime({ targets: '.video-main', opacity: [0, 1], duration: 300 });
                     }
                 });
             });
         });
 
-        main.addEventListener('timeupdate', () => {
-            const fill = document.querySelector('.v-progress-filled');
-            if (fill) fill.style.width = `${(main.currentTime / main.duration) * 100}%`;
-        });
+        if (mainVideo) {
+            mainVideo.addEventListener('timeupdate', () => {
+                const progress = (mainVideo.currentTime / mainVideo.duration) * 100;
+                if (progressBar) progressBar.style.width = `${progress}%`;
+            });
+        }
     }
 
-    // --- 7. FORM & WHATSAPP INTEGRATION ---
+    // --- 7. FORM HANDLING ---
     initFormHandler() {
         const form = document.getElementById('bookingForm');
         if (!form) return;
 
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const btn = form.querySelector('button[type="submit"]');
-            const originalText = btn.innerHTML;
-            
-            btn.innerHTML = '<span class="btn-text">Processing...</span>';
-            btn.style.opacity = '0.7';
-
-            const data = {
-                name: document.getElementById('fullName').value,
-                style: document.getElementById('tattooStyle').value,
-                phone: document.getElementById('phone').value,
-                msg: document.getElementById('message').value
-            };
-
-            const text = encodeURIComponent(`*New Ink Inquiry*\n\n*Client:* ${data.name}\n*Style:* ${data.style}\n*Phone:* ${data.phone}\n*Idea:* ${data.msg}`);
-            
-            setTimeout(() => {
-                window.open(`https://wa.me/9163253013?text=${text}`, '_blank');
-                btn.innerHTML = originalText;
-                btn.style.opacity = '1';
-                form.reset();
-            }, 1000);
+            const name = document.getElementById('fullName').value;
+            const style = document.getElementById('tattooStyle').value;
+            const msg = `Hi Inkverse! I'm ${name}. I want to book a ${style} session.`;
+            window.open(`https://wa.me/9163253013?text=${encodeURIComponent(msg)}`);
         });
     }
 
-    // --- 8. PAGE TRANSITIONS ---
+    // --- 8. PAGE TRANSITIONS (Barba) ---
     initBarba() {
+        if (!this.hasBarba || !this.hasAnime) return;
+        
         barba.init({
             transitions: [{
-                name: 'fade',
-                leave: (data) => anime({ targets: data.current.container, opacity: 0, duration: 600, easing: 'linear' }).finished,
+                name: 'opacity-transition',
+                leave: (data) => {
+                    return anime({ targets: data.current.container, opacity: [1, 0], duration: 600, easing: 'linear' }).finished;
+                },
                 enter: (data) => {
                     window.scrollTo(0, 0);
                     return anime({ targets: data.next.container, opacity: [0, 1], duration: 600, easing: 'linear' }).finished;

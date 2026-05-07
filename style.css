@@ -418,7 +418,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    opacity: 0;
+    /* opacity: 0; */
     transform: translateY(20px);
 }
 
@@ -1244,7 +1244,7 @@ body {
     width: 100%;
     background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
     padding: 20px;
-    opacity: 0;
+    /* opacity: 0; */
     transform: translateY(10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 5;
@@ -1325,7 +1325,7 @@ body {
 }
 
 .play-btn.hidden {
-    opacity: 0;
+    /* opacity: 0; */
     pointer-events: none;
     transform: translate(-50%, -50%) scale(0.8);
 }
@@ -2033,6 +2033,6 @@ spline-viewer::part(logo) {
 .p-label, .a-label, .a-desc, .r-label, .c-label,
 .word, .tattoo-swiper, .video-showcase, .artist-swiper, .reviews-swiper,
 .input-wrapper, .c-machine-wrapper, .c-brand-lockup {
-    opacity: 0;
+    /* opacity: 0; */
     will-change: transform, opacity;
 }
